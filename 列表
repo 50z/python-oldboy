@@ -1,0 +1,22 @@
+li = ['alec', 'aric', 'Alex', 'Tony', 'rain']
+#删除最后一个元素
+>>> li.pop()
+'rain'
+>>> li
+['alec', 'aric', 'Alex', 'Tony']
+#在列表最后追加一个元素
+>>> li.append("rain")
+>>> li
+['alec', 'aric', 'Alex', 'Tony', 'rain']
+#删除特定列表中的元素
+>>> li.remove("alec")
+>>> li
+['aric', 'Alex', 'Tony', 'rain']
+#全局按索引删除
+>>> del li[0]
+>>> li
+['Alex', 'Tony', 'rain']
+#按切片删除，从第0个位置一直到1，顾头不顾尾
+>>> del li[0:2]
+>>> li
+['rain']
