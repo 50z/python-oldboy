@@ -8,6 +8,10 @@ li = ['alec', 'aric', 'Alex', 'Tony', 'rain']
 >>> li.append("rain")
 >>> li
 ['alec', 'aric', 'Alex', 'Tony', 'rain']
+#指定检索位置插入
+>>> li.insert(0, "tom")
+>>> li
+['tom', 'alec', 'aric', 'Alex', 'Tony', 'rain']
 #删除特定列表中的元素
 >>> li.remove("alec")
 >>> li
@@ -20,3 +24,21 @@ li = ['alec', 'aric', 'Alex', 'Tony', 'rain']
 >>> del li[0:2]
 >>> li
 ['rain']
+#range自己是一列表range(0,10)就是0到9，10个数
+>>> for i in range(10):
+...     print (i)
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+#sort排序，按照
+>>> li.sort()
+>>> li
+['Alex', 'Tony', 'alec', 'aric', 'rain', 'tom']
