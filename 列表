@@ -64,3 +64,43 @@ li = ['alec', 'aric', 'Alex', 'Tony', 'rain']
 [7, 5, 4, 3, 2, 1]
 >>> n1
 [6, 5, 4, 3, 2, 1]
+#join 拼接
+>>> li
+['alex', 'eric', 'rain']
+>>> "_".join(li)
+'alex_eric_rain'
+#-----------------------------------------------------------------------------------------------------------------------
+#字符串
+>>> n
+'Hello World'
+>>> n.ljust(50, "-")
+'Hello World---------------------------------------'
+>>> n.center(50, "-")
+'-------------------Hello World--------------------'
+#在两边脱掉换行符tab空格等
+>>> n
+'\n Hello World     '
+>>> n.strip()
+'Hello World'
+>>> n.lstrip()
+'Hello World     '
+>>> n.rstrip()
+'\n Hello World'
+#替换，按次数替换
+>>> n
+'\n Hello World     '
+>>> n.replace("H", "h")
+'\n hello World     '
+>>> n.replace("o", "-")
+'\n Hell- W-rld     '
+>>> n.replace("o", "-", 1)
+'\n Hell- World
+#按需分割掉输入的元素，变成列表
+>>> n
+'\n Hello World     '
+>>> n.split()
+['Hello', 'World']
+>>> n.split("H")
+['\n ', 'ello World     ']
+#常用
+isdigit replace find count strip center split format join
