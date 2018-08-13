@@ -1,0 +1,20 @@
+# 以二进制格式读取文件，网络传输或者打开图片，视频
+f = open("file.txt", "rb")
+# 读取文件内容
+txt = f.read()
+print(txt)
+# 关闭文件
+f.close
+
+# 打印文件内容的编码类型
+import chardet
+f = open("file.txt", "rb")
+txt = f.read()
+print(chardet.detect(txt))
+
+# 循环读取文件每行
+
+f = open("file.txt", "r")
+for line in f:
+  print(line)
+f.close()
