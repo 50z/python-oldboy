@@ -1,0 +1,32 @@
+# 默认函数
+
+def stu_register(name, age, course, country="CN"):
+    print("registriation info....")
+    print(name, age, country, course)
+stu_register("Alex", 22, "python")
+stu_register("jack", 22, "python", "Korean")
+# 关键参数 关键参数不能在位置参数之前
+stu_register("jack", course="python", age=22, country="Korean")
+
+registriation info....
+Alex 22 CN python
+registriation info....
+jack 22 Korean python
+# 非固定参数 一*代入元组，二*代入字典
+def func(name, *args, **kwargs):
+    print(name, args, kwargs)
+
+
+d = {"jack": "school"}
+func("alex", 22, 33, 44, 55, **d)
+
+alex (22, 33, 44, 55) {'jack': 'school'}
+# 返回值
+# return终止函数，返回元组，一个值
+def stu_register(name,age,course):
+    print(name,age,course)
+    if age > 22:
+        return False
+    else:
+        return True
+# 
