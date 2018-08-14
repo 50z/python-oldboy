@@ -18,3 +18,40 @@ f = open("file.txt", "r")
 for line in f:
   print(line)
 f.close()
+
+# 将内存中写入的内容，存在硬盘中
+f.flush()
+# 判断文件是否可读
+f.readable()
+# 单行读
+f.readline()
+# 查看当前光标位
+f.tell()
+# 跳到指定位置
+f.seek(20)
+# gbk一个汉字两个字节，utf-8一个汉字三个字节
+# 判断文件是否可进行seek'操作
+f.seekable
+# 判断文件是否可写
+f.writable
+# 从指定位置截断（删除）后边的字节
+f.truncate()
+f.truncate(6) 截断6后面的字节
+# 替换字符 并导入新文件
+import os
+f_name = "test.txt"
+f_new_name= "%s.new" %f_name
+old_str = "jack"
+new_str = "tom"
+
+f = open(f_name, "r", encoding= "utf-8")
+f_new = open(f_new_name, "w", encoding = "utf-8")
+
+for line in f:
+  if old_str in line:
+  # str.replace(old, new, max)
+    line = line.replace(old_str, new_str)
+    f_new.write(line)
+f.close()
+f_new.close()
+os.rename(f_new_name, f_name)
