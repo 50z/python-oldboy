@@ -29,4 +29,37 @@ def stu_register(name,age,course):
         return False
     else:
         return True
-# 
+# 匿名函数
+func = lambda x,y:x*y
+func(3, 8)
+data = list(range(10))
+print(data)
+for index, i in enumerate(data):
+    data[index] = i*i
+def f2(n):
+    return n*n
+print(list(map(lambda x:x*x, data)))
+
+# 高阶函数
+# calc(func) return func f = func
+def func(x, y):
+    return x + y
+def calc(x):
+    return x
+f = calc(func)
+print(f(5, 9))
+# 递归函数
+def calc(n):
+    n = int(n/2)
+    print(n)
+    if n > 0:
+        calc(n)
+    print(n)
+    
+def calc(n, count):
+    if count < 5
+        return calc(n / 2, count + 1)
+    else:
+        return n
+calc(188, 1)
+print('res', res)
