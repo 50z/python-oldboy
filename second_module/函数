@@ -58,7 +58,7 @@ def calc(n):
     
 def calc(n, count):
     if count < 5
-        return calc(n / 2, count + 1)
+        return calc(n / 2, count + 1) # 返回最后一个值给n
     else:
         return n
 calc(188, 1)
