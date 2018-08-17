@@ -1,0 +1,47 @@
+abs() 绝对值
+dict() 转字典
+help()
+min() 取元组或列表最小的值
+any() 数据集合里有一个为true就返回true
+dir() 打印现在程序中所有变量
+hex（）数字变16进制
+slice（）定义切片规则
+divmod(10,3) (3,1) 得到结果和余数
+sorted() 排序
+ascii() 转换ascii码
+enumerate（）添加枚举
+oct（） 10进制转换8进制
+bin（）转换2进制
+eval（）转代码 字符串转代码 处理单行代码
+exrc() 转代码 可以执行多行 拿不到返回值
+ord() ascii 码对应的数字位置
+chr（）通过ascii码数字找到对应的字符
+sum() 求和列表元组
+bytearray() s = bytearray(s) 更改字符串 原内存地址修改
+map(lambda x : x*x, [1, 2,3,4,5])
+filter(lambda x : x > 3, [1,2,3,4,5])
+reduce 在python3中需要导入模块
+import functools
+functools.reduce(lambda x,y: x*y, [1,2,3,5,6678,4,2])
+>>> functools.reduce(lambda x,y:x*y, [1,2,3,4], 2)
+48
+
+pow() 求幂
+# print写入文件
+f = open("file.txt", "w")
+print(s,sep="=",end="",file=f) 
+callable() 查看是否可以被调用
+frozenset() 不可变集合
+vars() 查看当前所有变量及变量值
+locals() 带你函数的局部变量
+globals() 全局变量
+zip() 
+>>> a = [1,2,3,4,5]
+>>> b = [a,b,c]
+>>> list(zip(a,b))
+[(1, 'a'), (2, 'b'), (3, 'c')]
+
+complex() 复数
+round(1.344434,2) 保留几位小数
+hash() 
+set() 集合
