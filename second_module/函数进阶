@@ -1,0 +1,26 @@
+# 名称空间
+locals 局部变量和形参
+globals 全局变量
+builtins 内置模块
+
+# 作用域
+作用域的查找顺序
+LEGB l>e>g>b
+L：locals
+E：enclosing 相邻的上一级
+G:globls
+B:builtins
+# 闭包
+def func():
+    n = 10
+    def func2():
+        print("func2:", n)
+    return func2
+f = func()
+print(f)
+f()
+套内函数调用父函数的变量过程叫做闭包
+
+# 装饰器
+开放 封闭原则
+
