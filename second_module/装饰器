@@ -1,0 +1,47 @@
+user_status = False
+
+
+def login(fuc): # 第一次fuc = login参数
+    def inner():
+        username = "alex"
+        password = "abc123"
+        global user_status
+        if user_status == False:
+            _username = input("user> ")
+            _password = input("passwd:> ")
+            if _username == username and _password == password:
+                print("success")
+                user_status = True
+                return fuc() # login参数通过第一次代入 封装在上层的局部变量，通过闭包代入
+            else:
+                print("error")
+        else:
+            print("已登陆")
+    return inner # henan
+
+
+def home():
+    print("---首页----")
+
+
+def america():
+
+    print("----欧美专区----")
+
+
+def japan():
+    print("----日韩专区----")
+
+
+@login # @login = henan = login(henan)
+def henan():
+
+    print("----河南专区----")
+
+
+home()
+america = login(america)
+# henan = login(henan) # henan = inner
+
+henan()  # inner()
+
