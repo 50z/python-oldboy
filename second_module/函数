@@ -12,7 +12,8 @@ registriation info....
 Alex 22 CN python
 registriation info....
 jack 22 Korean python
-# 非固定参数 一*代入元组，二*代入字典
+# 非固定参数 一*打包代入元组，二*打包代入字典
+# 如果是列表传递，需要加*[],这样就不会出现([])
 def func(name, *args, **kwargs):
     print(name, args, kwargs)
 
