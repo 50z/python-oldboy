@@ -45,3 +45,52 @@ america = login(america)
 
 henan()  # inner()
 
+################################ 带参数的装饰器
+user_status = False
+
+
+def login(func):
+    def inner(*args, **kwargs): # 非固定参数 *args可以传入任意的参数 4p参数代入
+        username = "alex"
+        password = "abc123"
+        global user_status
+        if user_status == False:
+            _username = input("user: ")
+            _password = input("passwd: ")
+            if _username == username and _password == password:
+                print("success")
+                user_status = True
+            #   func(*args, **kwargs)  如果func在此位置会出现 第二次认证时就无法在此认证
+            else:
+                print("error")
+        else:
+            print("已登陆")
+        if user_status:
+            func(*args, **kwargs)  # henan("4O") - henan(style)
+    return inner
+
+
+
+def home():
+    print("---首页----")
+
+
+def america():
+
+    print("----欧美专区----")
+
+
+@login
+def japan():
+    print("----日韩专区----")
+
+@login
+def henan(style):
+    print("----河南专区----", "3p")
+
+
+# henan = login(henan)
+# america = login(america)
+home()
+henan("4p") # 传递参数 inner("4p")
+japan() # 通过*args来允许无参数也可以访问
