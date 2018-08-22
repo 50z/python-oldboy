@@ -1,0 +1,29 @@
+# 列表生成式
+a = [1,2,3,4,5,6,7,8,9,0]
+b = ("alex")
+a = [i+1 for i in a] # 可以加减乘除任意
+a
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+b = [i for i in b]
+b
+['a', 'l', 'e', 'x']
+
+# 生成器
+a2 = (i for i in range(1000))
+>>> a2
+<generator object <genexpr> at 0x0000025D1B0B94C0> # 内存公式
+next(a2) # 最后一个值会报错
+按顺序输出
+while True:
+    next(a2)
+for i in a2:
+    print i
+# 兔子序列
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        print(b)
+        a, b = b, a + b
+        n = n + 1
+    return "done"
