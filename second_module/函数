@@ -19,7 +19,7 @@ def func(name, *args, **kwargs):
 
 
 d = {"jack": "school"}
-func("alex", 22, 33, 44, 55, **d)
+func("alex", 22, 33, 44, 55, **d,addr = 'shandong', num = 1234)
 
 alex (22, 33, 44, 55) {'jack': 'school'}
 # 返回值
