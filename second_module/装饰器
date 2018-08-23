@@ -95,4 +95,56 @@ home()
 henan("4p") # 传递参数 inner("4p")
 japan() # 通过*args来允许无参数也可以访问
 
-###################################### 
+###################################### 加认证,多层认证
+user_status = False
+
+
+def login(auto_type): # qq
+
+
+    def outner(func): # henan
+
+
+        def inner(*args): # 3P
+            username = "alex"
+            password = "abc123"
+            global user_status
+            if user_status == False:
+                _username = input("user:")
+                _password = input("passwd:")
+                if _username == username and _password == password:
+                    print("success")
+                    user_status = True
+                else:
+                    print("密码erros")
+            else:
+                print("已登陆")
+            if user_status:
+                func(*args)
+
+        return inner
+
+    return outner
+
+
+
+def home():
+    print("---首页----")
+
+
+def america():
+
+    print("----欧美专区----")
+
+
+
+def japan():
+    print("----日韩专区----")
+
+@login("qq")
+def henan(style):
+    print("----河南专区----", "3p")
+
+# xx = login("qq") # xx = outner
+# henan = xx(henan) # henan = inner
+henan("3p") # inner("3P")
