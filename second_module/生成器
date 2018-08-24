@@ -10,6 +10,12 @@ b
 ['a', 'l', 'e', 'x']
 
 # 生成器
+py2
+    range = list
+    xrange = 生成器
+py3
+    range = list
+    xrange = 生成器
 a2 = (i for i in range(1000))
 >>> a2
 <generator object <genexpr> at 0x0000025D1B0B94C0> # 内存公式
@@ -25,5 +31,19 @@ def fib(max):
     while n < max:
         print(b)
         a, b = b, a + b
+        1, 1 = 1, 0 + 1
+        1, 2 = 1, 1 + 1
+        2, 3 = 2, 2 + 3
         n = n + 1
     return "done"
+x = fib(10)
+n1 = next(x)
+
+# yield
+yield 返回数据，并冻结当前的执行过程
+return 返回并中止函数
+函数有yield之后
+函数名加（）就得到了一个生成器
+return 在生成器里，代表生成器的中止，直接报错
+next 作用唤醒并继续执行 发送None
+send 唤醒并继续执行，发送一个信号到生成器内部
