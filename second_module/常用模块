@@ -1,0 +1,8 @@
+模块 好处
+1，提高可维护性
+2，可重用
+3，避免函数名和变量名冲突
+import xxx
+from os import xx
+第三方开源
+pip3 install xx
