@@ -6,3 +6,8 @@ import xxx
 from os import xx
 第三方开源
 pip3 install xx
+#当前动态路径 跨模块导入 D:\python实验\oldboy\第二模块\packages\my_proj\crm\views.py 导入 D:\python实验\oldboy\第二模块\packages\my_proj\proj\settings.py
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)  
+
+# 相对导入
