@@ -27,3 +27,67 @@ time.strftime("%Y-%m-%d %H:%M:%S",time.gmtime(1432224000.0))
 2016/05/22
 
 #datetime
+返回当前的datetime日期类型
+>>> d = datetime.datetime.now()
+>>> d
+datetime.datetime(2018, 8, 30, 9, 14, 34, 830606)
+时间戳
+>>> d.timestamp
+<built-in method timestamp of datetime.datetime object at 0x00000259B729D418>
+显示今天
+>>> d.today()
+datetime.datetime(2018, 8, 30, 9, 34, 3, 423039)
+显示今年
+>>> d.year
+2018
+以元组形式显示
+>>> d.timetuple()
+time.struct_time(tm_year=2018, tm_mon=8, tm_mday=30, tm_hour=9, tm_min=14, tm_sec=34, tm_wday=3, tm_yday=242, tm_isdst=-1)
+把一个时间戳转为datetime日期类型
+>>> datetime.date.fromtimestamp(322222)
+datetime.date(1970, 1, 5)
+时间运算
+>>> d
+datetime.datetime(2018, 8, 30, 9, 14, 34, 830606)
+>>> d + datetime.timedelta(4) # 默认为天数+4
+datetime.datetime(2018, 9, 3, 9, 14, 34, 830606)
+小时+4
+>>> d
+datetime.datetime(2018, 8, 30, 9, 14, 34, 830606)
+>>> d + datetime.timedelta(hours = 4)
+datetime.datetime(2018, 8, 30, 13, 14, 34, 830606)
+时间替换
+>>> d
+datetime.datetime(2018, 8, 30, 9, 14, 34, 830606)
+>>> d.replace(year = 2999, month = 11, day = 30)
+datetime.datetime(2999, 11, 30, 9, 14, 34, 830606)
+################
+# random模块
+import random
+1-10之间得随机数，不包括10
+>>> random.randrange(1,10)
+5
+1-10之间得随机数，包括10
+>>> random.randint(1,2)
+随机范围得步长为2
+random.randrange(0, 100, 2)
+随机返回一个字符
+random.choice('abce3#$@1')
+从多个字符中选取特定数量
+>>> random.sample('abcdefghij',3)
+['h', 'e', 'a']
+生成随机字符串
+>>> import string
+>>> string.ascii_lowercase
+'abcdefghijklmnopqrstuvwxyz'
+>>> string.digits
+'0123456789'
+>>> ''.join(random.sample(string.ascii_lowercase + string.digits, 6))
+'8tj6us'
+洗牌
+>>> a = list(range(11))
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> random.shuffle(a)
+>>> a
+[6, 9, 5, 1, 4, 2, 3, 8, 10, 0, 7]
