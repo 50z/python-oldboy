@@ -1,0 +1,44 @@
+将内存数据转换为字符串 为 序列化
+将字符串转化为数据 为 反序列化
+
+json
+import json
+转化为字符串
+json.dumps()
+#
+import json
+
+
+data = {'staff_id': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+ 'name': ['Alex Li', 'Jack Wang', 'Rain Wang', 'Mack Qiao', 'Rachel Chen', 'Eric Liu', 'Chao Zhang', 'Kevin Chen', 'Shit Wen', 'Shanshan Du'],
+ 'age': ['22', '28', '21', '44', '23', '19', '21', '22', '20', '26'],
+ 'phone': ['13651054608', '13451024608', '13451054608', '15653354208', '13351024606', '18531054602', '13235324334', '13151054603', '13351024602', '13698424612'],
+ 'dept': ['IT', 'HR', 'IT', 'Sales', 'IT', 'Market', 'Administration', 'Sales', 'IT', 'Operation'],
+ 'enrolled_date': ['2013‐04‐01', '2015‐01‐07', '2017‐04‐01', '2016‐02‐01', '2013‐03‐16', '2012‐12‐01', '2011‐08‐08', '2013‐04‐01', '2017‐07‐03', '2017‐07‐02']}
+#将要存储json文件名称，w模式
+f = open("test.json", "w")
+# 要写入文件的原文件，通过f写入，转换字符串并写入文件
+json.dump(data, f)
+#从文件中读取
+f = open("test.json", "r")
+data = json.load(f)
+print(data)
+
+
+只是把数据类型转成字符串存到内存里的意义？
+json.dumps json.loads
+1.把你的内存数据 通过网络 共享给远程其他人
+2.跨平台跨语言 定义不同语言的交互规则
+纯文本，坏处 不能共享复杂的数据类型
+xml，坏处，占空间大
+json 简单 可读性好
+不能load多次 报错
+
+# pickle 方法同json
+.pkl
+
+json 可序列化类型
+  str,int,tuple,list,dict
+pickle 可序列化类型
+  支持python里的所有的数据类型
+  只能在python里使用
