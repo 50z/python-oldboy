@@ -42,3 +42,5 @@ json 可序列化类型
 pickle 可序列化类型
   支持python里的所有的数据类型
   只能在python里使用
+# shelve
+
