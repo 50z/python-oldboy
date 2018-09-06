@@ -1,0 +1,27 @@
+import logging
+class IgnoreBackupLogFilter(logging.Filter):
+    '''忽略带DB BACKUP的日志'''
+    def filter(self, record):
+        return "db bakup" not in record.getMessage()
+#1 生成logger对象
+logger = logging.getLogger("web")
+logger.setLevel(logging.INFO)
+#1.1 把filter对象添加到logger中
+logger.addFilter(IgnoreBackupLogFilter())
+#2 生成handler对象
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+fh = logging.FileHandler("web.log")
+# 按大小切割
+fh = handlers.RotatingFileHandler(filename=log_file,maxBytes=10,backupCount=3)
+# 按时间日期切割
+fh = handlers.TimedRotatingFileHandler(filename=log_file,when="S",interval=5,backupCount=3)
+fh.setLevel(logging.WARNING)
+#2.1 把handler对象 绑定到logger
+logger.addHandler(ch)
+logger.addHandler(fh)
+
+#3 生成formatter对象
+#3.1 把formatter对象 绑定handler对象
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(lineno)d - %(message)s')
