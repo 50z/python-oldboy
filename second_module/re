@@ -1,0 +1,85 @@
+re.match 从开头开始匹配
+re.search 全局匹配 匹配到就返回
+re.findall 全部匹配
+match_res = re.search("[0]", s)
+if match_res:
+  print(match_res.group()) 拿到匹配结果
+ 
+re.search("^", "") 等于 re.match都是从开头开始
+
+'.'     默认匹配除\n之外的任意一个字符，若指定flag DOTALL,则匹配任意字符，包括换行
+
+'^'     匹配字符开头，若指定flags MULTILINE,这种也可以匹配上(r"^a","\nabc\neee",flags=re.MULTILINE)
+匹配以什么开头
+>>> re.search("^\*", "*ackd")
+<_sre.SRE_Match object; span=(0, 1), match='*'>
+'$'     匹配字符结尾， 若指定flags MULTILINE ,re.search('foo.$','foo1\nfoo2\n',re.MULTILINE).group() 会匹配到foo1
+>>> re.search("b$", "ab")
+<_sre.SRE_Match object; span=(1, 2), match='b'>
+匹配以b.（任意字符）开头结尾
+>>> re.match(".b$", "bb")
+<_sre.SRE_Match object; span=(0, 2), match='bb'>
+'*'     匹配*号前的字符0次或多次， re.search('a*','aaaabac')  结果'aaaa'
+匹配a的0次或多次
+>>> re.search("a*", "aaaalex")
+                          索引位
+<_sre.SRE_Match object; span=(0, 4), match='aaaa'>
+只匹配a开头
+>>> re.search("ab*", "aaabaaaa")
+<_sre.SRE_Match object; span=(0, 1), match='a'>
+
+'+'     匹配前一个字符1次或多次，re.findall("ab+","ab+cd+abb+bba") 结果['ab', 'abb']
+.+匹配多次 多个.代表任意字符
+>>> re.search(".+", "abbb")
+<_sre.SRE_Match object; span=(0, 4), match='abbb'>
+'?'     匹配前一个字符1次或0次 ,re.search('b?','alex').group() 匹配b 0次
+'{m}'   匹配前一个字符m次 ,re.search('b{3}','alexbbbs').group()  匹配到'bbb'
+'{n,m}' 匹配前一个字符n到m次，re.findall("ab{1,3}","abb abc abbcbbb") 结果'abb', 'ab', 'abb']
+                匹配a-z字母1-2次
+>>> re.search("[a-z]{1,2}", "2lex")
+<_sre.SRE_Match object; span=(1, 3), match='le'>
+'|'     匹配|左或|右的字符，re.search("abc|ABC","ABCBabcCD").group() 结果'ABC'
+>>> re.search("[a|A]lex", "alex")
+<_sre.SRE_Match object; span=(0, 4), match='alex'>
+'(...)' 分组匹配， re.search("(abc){2}a(123|45)", "abcabca456c").group() 结果为'abcabca45'
+拆分数字和字母有（）来表示 .groups对应的拆分显示
+>>> re.search("([a-z]+)([0-9]+)", "alex123").groups()
+('alex', '123')
+
+'\A'    只从字符开头匹配，re.search("\Aabc","alexabc") 是匹配不到的，相当于re.match('abc',"alexabc") 或^
+等同^
+'\Z'    匹配字符结尾，同$ 
+'\d'    匹配数字0-9 同[0-9]
+贪婪匹配 所有出现的数字，K后的字母不匹配是应为search只匹配一次就返回了
+>>> re.search("\d+", "alex12314141k2131")
+<_sre.SRE_Match object; span=(4, 12), match='12314141'>
+'\D'    匹配非数字
+也可贪婪匹配 匹配所有非数字
+>>> re.search("\D", "alex12314141k2131")
+<_sre.SRE_Match object; span=(0, 1), match='a'>
+>>> re.search("\D+", "alex12314141k2131")
+<_sre.SRE_Match object; span=(0, 4), match='alex'>
+'\w'    匹配[A-Za-z0-9] 匹配除特殊字符以外的内容
+>>> re.search("\w", "#$%alex12314141k2131")
+<_sre.SRE_Match object; span=(3, 4), match='a'>
+>>> re.search("\w+", "#$%alex12314141k2131")
+<_sre.SRE_Match object; span=(3, 20), match='alex12314141k2131'>
+'\W'    匹配非[A-Za-z0-9]
+匹配特殊字符
+>>> re.search("\W", "#$%alex12314141k2131")
+<_sre.SRE_Match object; span=(0, 1), match='#'>
+>>> re.search("\W+", "#$%alex12314141k2131")
+<_sre.SRE_Match object; span=(0, 3), match='#$%'>
+'\s'     匹配空白字符、\t、\n、\r , re.search("\s+","ab\tc1\n3").group() 结果 '\t'
+
+
+'(?P<name>...)' 分组匹配 re.search("(?P<province>[0-9]{4})(?P<city>[0-9]{2})(?P<birthday>[0-9]{4})","371481199306143242").groupdict("city") 结果{'province': '3714',
+'city': '81', 'birthday': '1993'}
+拆分字段
+>>> s = "1307042000005250613"
+>>> re.search("(?P<prov>\d{3})(?P<city>\d{3})(?P<born>\d{4})", s).groups()
+('130', '704', '2000')
+变成字典
+>>> res = re.search("(?P<prov>\d{3})(?P<city>\d{3})(?P<born>\d{4})", s)
+>>> res.groupdict()
+{'prov': '130', 'city': '704', 'born': '2000'}
