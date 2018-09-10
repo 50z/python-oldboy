@@ -1,0 +1,11 @@
+项目名
+  log
+  conf
+    setting
+  项目名
+  libs/modules #第三方库/模块
+  docs
+  README
+    install
+  setup.py
+  bin/start.py
