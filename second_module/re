@@ -7,6 +7,33 @@ if match_res:
  
 re.search("^", "") 等于 re.match都是从开头开始
 
+re.split()
+>>> s = "alex21jack23rain31jinxin124"
+>>> re.split("\d", s)
+['alex', '', 'jack', '', 'rain', '', 'jinxin', '', '', '']
+>>> re.split("\d.", s)
+['alex', 'jack', 'rain', 'jinxin', '4']
+>>> re.split("\d..", s)
+['alex', 'ack', 'ain', 'inxin', '']
+>>> re.split("\d+", s)
+['alex', 'jack', 'rain', 'jinxin', '']
+
+ re.sub()
+ >>> s
+'alex21jack23rain31jinxin124'
+>>> re.sub("\d+", "_", s, count = 2)
+'alex_jack_rain31jinxin124'
+maxsplit
+>>> s
+'9-2*5/3+7/3*99/4*2998+10*568/14'
+>>> re.split("\W", s, maxsplit = 2)
+['9', '2', '5/3+7/3*99/4*2998+10*568/14']
+
+re.fullmatch
+
+
+
+
 '.'     默认匹配除\n之外的任意一个字符，若指定flag DOTALL,则匹配任意字符，包括换行
 
 '^'     匹配字符开头，若指定flags MULTILINE,这种也可以匹配上(r"^a","\nabc\neee",flags=re.MULTILINE)
@@ -83,3 +110,5 @@ re.search("^", "") 等于 re.match都是从开头开始
 >>> res = re.search("(?P<prov>\d{3})(?P<city>\d{3})(?P<born>\d{4})", s)
 >>> res.groupdict()
 {'prov': '130', 'city': '704', 'born': '2000'}
+
+
