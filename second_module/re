@@ -124,3 +124,31 @@ re.compile
 >>> a = re.compile("\w+\@\w+\.(com|cn|edu)")
 >>> a.fullmatch(s)
 <_sre.SRE_Match object; span=(0, 18), match='alex@oldboyedu.com'>
+
+Flags标识符
+re.l忽略大小写
+>>> s
+'alex@oldboyedu.com'
+>>> re.search('A', s)
+>>> re.search('A', s, re.I)
+<_sre.SRE_Match object; span=(0, 1), match='a'>
+
+re.M 区分换行
+>>> re.search("a00.$", s, re.M)
+<_sre.SRE_Match object; span=(0, 4), match='a001'>
+>>> re.search("a00.$", s)
+<_sre.SRE_Match object; span=(5, 9), match='a002'>
+re.M会匹配多行，而不加只会匹配最后一行
+>>> re.findall("a00.$", s, re.M)
+['a001', 'a002']
+>>> re.findall("a00.$", s)
+['a002']
+
+re.S 匹配任意字符 匹配换行符
+>>> re.search(".", "\n")
+
+>>> re.search(".", "\n", re.S)
+<_sre.SRE_Match object; span=(0, 1), match='\n'>
+
+re.X 给正则加注释
+
