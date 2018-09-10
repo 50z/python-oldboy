@@ -31,6 +31,10 @@ maxsplit
 
 re.fullmatch
 
+>>> s
+'alex@oldboyedu.com'
+>>> re.fullmatch("\w+\@\w+\.(com|cn|edu)", s)
+<_sre.SRE_Match object; span=(0, 18), match='alex@oldboyedu.com'>
 
 
 
@@ -112,3 +116,11 @@ re.fullmatch
 {'prov': '130', 'city': '704', 'born': '2000'}
 
 
+re.compile
+是先将正则匹配的内容做成函数规则，然后可以匹配或判断 ,当公式匹配1万次时影响效率
+>>> s
+'alex@oldboyedu.com'
+>>>
+>>> a = re.compile("\w+\@\w+\.(com|cn|edu)")
+>>> a.fullmatch(s)
+<_sre.SRE_Match object; span=(0, 18), match='alex@oldboyedu.com'>
